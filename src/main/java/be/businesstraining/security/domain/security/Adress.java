@@ -4,32 +4,33 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.loader.plan.exec.process.spi.CollectionReferenceInitializer;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "Bill")
+@Table(name = "ADRESS")
 @Data
-@NoArgsConstructor
 @Getter
 @Setter
-public class Bill {
-
-    /* Clé étrangère vers la table User */
+@NoArgsConstructor
+public class Adress {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long AdressID;
 
     @OneToMany
-    @JoinColumn(name = "id")
+    @Column(name = "id")
     private List<User> users;
 
-    private Date date;
-    private double total;
-    private boolean isPaid;
+    private String Street;
 
+    private Integer number;
+
+    private String city;
+
+    private String country;
 
 }

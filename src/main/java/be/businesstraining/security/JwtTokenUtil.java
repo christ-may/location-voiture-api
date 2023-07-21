@@ -27,10 +27,9 @@ public class JwtTokenUtil implements Serializable {
     private Clock clock = DefaultClock.INSTANCE;
 
     @Value("${jwt.secret}")
-    //private byte secret;
-    byte[] secret = stringSecret.getBytes();
+    private String secret;
 
-    @Value("${jwt.expiration}")
+    @Value("60480000")
     private Long expiration;
 
     public String getUsernameFromToken(String token) {
@@ -50,16 +49,11 @@ public class JwtTokenUtil implements Serializable {
         return claimsResolver.apply(claims);
     }
 
-    /*
     private Claims getAllClaimsFromToken(String token) {
         return Jwts.parser()
             .setSigningKey(secret)
             .parseClaimsJws(token)
             .getBody();
-    }*/
-
-    private static Claims extractClaims(String token) {
-        return Jwts.parser().setSigningKey(JWT_SECRET.getBytes()).parseClaimsJws(token).getBody();
     }
 
     private Boolean isTokenExpired(String token) {

@@ -6,30 +6,24 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.List;
 
+
 @Entity
-@Table(name = "Bill")
-@Data
-@NoArgsConstructor
+@Table(name = "NOTIFICATION")
 @Getter
 @Setter
-public class Bill {
-
-    /* Clé étrangère vers la table User */
-
+@Data
+@NoArgsConstructor
+public class Notification {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @OneToMany
-    @JoinColumn(name = "id")
+    @Column(name = "id") // Nom de la colonne pour la clé étrangère
     private List<User> users;
 
-    private Date date;
-    private double total;
-    private boolean isPaid;
-
-
+    private String message;
+    private boolean isRead;
 }
