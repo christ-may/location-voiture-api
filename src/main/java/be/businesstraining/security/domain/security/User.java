@@ -1,5 +1,10 @@
 package be.businesstraining.security.domain.security;
 
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 import java.util.Date;
@@ -7,6 +12,10 @@ import java.util.List;
 
 @Entity
 @Table(name = "USER")
+@NoArgsConstructor
+@Getter
+@Setter
+@Data
 public class User {
 
     @Id
@@ -15,6 +24,10 @@ public class User {
     //@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")
     //@SequenceGenerator(name = "user_seq", sequenceName = "user_seq", allocationSize = 1)
     private Long id;
+
+    @OneToOne
+    private Adress adress;
+
 
 
     //@Column(name = "USERNAME", length = 50, unique = true)
@@ -41,6 +54,8 @@ public class User {
 
     private Boolean enabled;
 
+    private Integer foneNumber;
+
     //@Column(name = "LASTPASSWORDRESETDATE")
     @Temporal(TemporalType.TIMESTAMP)
 
@@ -53,8 +68,6 @@ public class User {
             inverseJoinColumns = {@JoinColumn(name = "AUTHORITY_ID", referencedColumnName = "ID")})
     private List<Authority> authorities;
 
-    public User() {
-    }
 
     public User(String username, String password) {
         this.username = username;
@@ -62,61 +75,6 @@ public class User {
         this.enabled = true;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Boolean getEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
-    }
 
     public List<Authority> getAuthorities() {
         return authorities;

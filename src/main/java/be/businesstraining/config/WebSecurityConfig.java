@@ -86,8 +86,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.PUT,"/car/**").permitAll()
                 .antMatchers(HttpMethod.POST,"/car/**").permitAll()
                 .antMatchers(HttpMethod.DELETE,"/car/**").permitAll()
-                .antMatchers(HttpMethod.GET,"/client/**").permitAll()
-            .anyRequest().authenticated();
+                .antMatchers(HttpMethod.GET,"/user/**").permitAll()
+                .antMatchers(HttpMethod.GET,"/rental/**").permitAll()
+                .antMatchers(HttpMethod.POST,"/rental/**").permitAll()
+                .antMatchers(HttpMethod.PUT,"/rental/**").permitAll()
+                .antMatchers(HttpMethod.DELETE,"/rental/**").permitAll()
+                .antMatchers(HttpMethod.GET,"/penality/**").permitAll()
+                .antMatchers(HttpMethod.POST,"/penality/**").permitAll()
+
+                .anyRequest().authenticated();
 
        httpSecurity
             .addFilterBefore(authenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);

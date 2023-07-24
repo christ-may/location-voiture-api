@@ -2,7 +2,7 @@ package be.businesstraining.services;
 
 
 import be.businesstraining.security.domain.security.Car;
-import be.businesstraining.repository.ICarRepository;
+import be.businesstraining.security.repository.ICarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,7 +32,7 @@ public class CarServiceImpl implements CarService{
 
 
     public void addCar(Car car){
-        Optional<Car> car1 = carRepo.findById(car.getCarId());
+        Optional<Car> car1 = carRepo.findById(car.getId());
         if (car1 != null){
             carRepo.save(car);
         }

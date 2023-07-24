@@ -19,11 +19,10 @@ public class Adress {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long AdressID;
+    private Long id;
 
-    @OneToMany
-    @Column(name = "id")
-    private List<User> users;
+    /*@OneToOne
+    private User user;*/
 
     private String Street;
 

@@ -19,23 +19,20 @@ import java.util.List;
 public class Rental {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long rentalId;
-
-    @ManyToOne
-    @JsonIgnore
-    private Client client;
+    private Long id;
 
 
-    @JsonIgnore
-    @ManyToOne
-    @Column(name = "id")
+    /*@JsonIgnore
+    @OneToOne
     private User user;
 
 
     @JsonIgnore
-    @ManyToOne
-
+    @OneToOne
     private Car car;
+*/
+    @OneToOne
+    private Accident accident;
 
     private Date dateLocation;
     private Date dateBegin;

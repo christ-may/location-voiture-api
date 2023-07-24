@@ -10,14 +10,18 @@ import javax.persistence.*;
 @Getter @Setter
 @NoArgsConstructor
 
-@ToString(exclude="location")
+//@ToString(exclude="location")
 public class Car {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long carId;
+    private Long id;
 
-    private String carName;
+    @ManyToOne
+    private Insurance insurance;
+
+    private Marques carName;
+    private Integer registrationNumber; // Numéro d’immatriculation
     private  String carburant;
     private Integer nbPortes;
     private Integer nbPlacesAssis;
@@ -44,7 +48,7 @@ public class Car {
         //this.locations = locations;
     }*/
 
-    public Car(String carName, String carburant, Integer nbPortes, Integer nbPlacesAssis, String typeBoite, Integer releaseYear, Integer price, String available, String imgUrl) {
+    public Car(Marques carName, String carburant, Integer nbPortes, Integer nbPlacesAssis, String typeBoite, Integer releaseYear, Integer price, String available, String imgUrl) {
         this.carName = carName;
         this.carburant = carburant;
         this.nbPortes = nbPortes;

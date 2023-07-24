@@ -1,9 +1,6 @@
 package be.businesstraining.security.domain.security;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -13,6 +10,7 @@ import java.util.List;
 @Table(name = "Bill")
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 public class Bill {
@@ -23,9 +21,7 @@ public class Bill {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany
-    @JoinColumn(name = "id")
-    private List<User> users;
+
 
     private Date date;
     private double total;

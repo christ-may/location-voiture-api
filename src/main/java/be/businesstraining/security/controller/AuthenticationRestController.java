@@ -7,7 +7,7 @@ import be.businesstraining.security.domain.security.Authority;
 import be.businesstraining.security.domain.security.AuthorityName;
 import be.businesstraining.security.domain.security.User;
 import be.businesstraining.security.repository.AuthorityRepository;
-import be.businesstraining.security.repository.UserRepository;
+import be.businesstraining.security.repository.IUserRepository;
 import be.businesstraining.security.service.JwtAuthenticationResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -46,7 +46,7 @@ public class AuthenticationRestController {
     private UserDetailsService userDetailsService;
 
     @Autowired
-    private UserRepository userRepository;
+    private IUserRepository userRepository;
 
     @Autowired
     private AuthorityRepository authorityRepository;
